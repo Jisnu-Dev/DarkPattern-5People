@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Price Result</title>
+</head>
+<body>
+    <h1>{{ result_message }}</h1>
+    {% if price_urls %}
+        <h2>URLs:</h2>
+        <ul>
+            {% for key, value in price_urls.items() %}
+                <li>{{ key }}: <a href="{{ value }}" target="_blank">{{ value }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+</head>
+<body>
+    <h1>Product Information</h1>
+    
+    <form method="post" action="/">
+        <label for="product_name">Product Name:</label>
+        <input type="text" name="product_name" required>
+        <br>
+        <label for="product_type">Product Type:</label>
+        <input type="text" name="product_type" required>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if flipkart_data %}
+        <h2>Flipkart Data:</h2>
+        <p>Name: {{ flipkart_data['Name'] }}</p>
+        <p>Price: {{ convert_price(flipkart_data['Price']) }}</p>
+        <p>Rating: {{ flipkart_data['Rating'] }}</p>
+        <p>Description: {{ flipkart_data['Description'] }}</p>
+    {% endif %}
+
+    {% if filtered_products %}
+        <h2>Phones in the same price range:</h2>
+        {{ filtered_products|safe }}
+    {% endif %}
+</body>
+</html>
